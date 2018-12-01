@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete List</title>
+</head>
+ <body>
+    <h1>Warning</h1>
+    <p>Are you sure you want to delete</p>
+    {% for i in events %}
+    {{i.name}}
+    {{i.items}}
+    {% endfor %}
+    <button type="button">Delete</button>
+    <button type="button">Cancel</button>
+
+
+ </body>
+</html>
