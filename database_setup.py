@@ -1,19 +1,15 @@
-import sys
-
 from sqlalchemy import Column, ForeignKey, Integer, String
-
 from sqlalchemy.ext.declarative import declarative_base
-
 from sqlalchemy.orm import relationship
-
 from sqlalchemy import create_engine
+
 
 Base = declarative_base()
 
 
 class User(Base):
     __tablename__ = 'user'
-    email = Column(String(80), nullable=False, )
+    email = Column(String(80), nullable=False, unique=True)
     id = Column(Integer, primary_key=True)
 
 
@@ -25,7 +21,15 @@ class Event(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
 
+    @property
+    def serialize(self):
+        return {
+            'id': self.id,
+            'items': self.items,
+            'name': self.name,
+        }
 
-engine = create_engine('sqlite://dontForget.db')
+
+engine = create_engine('sqlite:///dontForget.db')
 
 Base.metadata.create_all(engine)

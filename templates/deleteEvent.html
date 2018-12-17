@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Delete List</title>
+    <style>
+        h1{color: red;
+           background-color:black;
+           text-align: center;
+           }
+    </style>
 </head>
  <body>
     <h1>Warning</h1>
     <p>Are you sure you want to delete</p>
+    the name of the event goes here
     {% for i in events %}
     {{i.name}}
     {{i.items}}
