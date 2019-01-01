@@ -1,11 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Edit List</title>
-</head>
-<body>
-<p>this will be for editing event titles</p>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+	<body>
 
+<h1> Edit Menu Item </h1>
+
+<form action="{{ url_for('editMenuItem',restaurant_id = restaurant_id, menu_id=item.id)}}" method = 'post'>
+
+<dl>
+	<dt>Name:</dt>
+		<dd><input type ='text' size='30' name='name' placeholder = '{{event.name }}'></dd>
+	<dt>Items:</dt>
+		<dd><textarea name = 'description' rows='5' cols='40' placeholder = '{{event.items }}'></textarea></dd>
+
+	{% if item.course == 'day trip' %}
+		<dd><input type ='radio' name='category' value='day trip' checked >day trip</dd>
+	{%else%}
+	<dd><input type ='radio' name='category' value='day trip' >day trip</dd>
+    {% endif %}
+
+    {% if item.course == 'overnight' %}
+       <dd><input type ='radio' name='category' value='overnight' checked >overnight</dd>
+
+    {%else%}
+		<dd><input type ='radio' name='category' value='overnight'>overnight</dd>
+    {% endif %}
+
+	{% if item.course == 'recipe'%}
+		<dd><input type ='radio' name='category' value='recipe' checked >recipe</dd>
+
+	{% else %}
+	   <dd><input type ='radio' name='category' value='recipe'>recipe</dd>
+
+	{% endif %}
+
+</dl>
+
+
+<input type='submit' value='Edit'>
+
+<a href = '{{url_for('myEvents', user_id = user_id)}}'> Cancel </a>
+</form>
 </body>
 </html>

@@ -6,7 +6,36 @@
     <meta name="Don't forget" content="Make make a new list">
 </head>
 <body>
-<p>this page is going to be for creating new events</p>
+<p>Fill in the boxes and and your list will be saved</p>
+
 
 </body>
 </html>
+
+<html>
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+<body>
+
+<h1>New Menu Item</h1>
+
+<div class = 'pane'>
+<form action="{{ url_for('newMenuItem', restaurant_id=restaurant_id )}}" method = 'post'>
+
+<dl>
+	<dt>Name:</dt>
+		<dd><input type ='text' size='30' name='name'></dd>
+</dl>
+
+
+<input type='submit' value='Create'>
+
+</form>
+</div>
+
+</body>
+
+
+
+

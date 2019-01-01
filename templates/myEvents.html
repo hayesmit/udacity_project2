@@ -6,15 +6,22 @@
     <meta name="dontForget" content="my Dont't Forget lists">
 </head>
 <body>
-    <h1>My Dont Forget Events and items</h1>
+    <h1>Hello {{login_session.email}} </h1>
+    <p>Here are all of the lists we have on file for you.</p>
 
-    {% for i in lists %}
-</br>
+    {% for  in events %}
+<br>
 
     {{i.name}}
-</br>
+<br>
 
     {{i.items}}
+<br>
+    <a href = '{{url_for("editEvent", user_id = user.id, event_id = e.id) }}'>Edit</a>
+<br>
+<a href = '{{url_for("deleteEvent", user_id = user.id, event_id = e.id ) }}'>Delete</a>
+
     {% endfor %}
+
 </body>
 </html>
